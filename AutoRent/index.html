@@ -1,0 +1,370 @@
+
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>AutoRent | Gestão de Aluguéis</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+    <header class="navbar navbar-dark navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">
+                🚘 AutoRent
+            </a>
+        </div>
+    </header>
+
+    <main class="container py-4">
+
+        <!-- APRESENTAÇÃO -->
+        <div class="hero p-4 p-md-5 mb-4">
+            <span class="eyebrow">PLATAFORMA DE LOCAÇÃO</span>
+
+            <h1 class="fw-bold mt-2">
+                Gerencie aluguéis de forma simples.
+            </h1>
+
+            <p class="mb-0">
+                Clientes, automóveis, solicitações e análise
+                financeira em um só lugar.
+            </p>
+        </div>
+
+        <!-- MENSAGENS -->
+        <div id="alertas" aria-live="polite"></div>
+
+        <!-- ACESSO -->
+        <section class="card panel mb-4">
+            <div class="card-body">
+
+                <h2 class="h5">Acesso ao sistema</h2>
+
+                <p class="small text-secondary">
+                    Selecione um usuário previamente cadastrado.
+                    Ambiente de demonstração sem autenticação por senha.
+                </p>
+
+                <div class="row g-2 align-items-end">
+
+                    <div class="col-md-8">
+                        <label class="form-label" for="usuarioAtual">
+                            Usuário
+                        </label>
+
+                        <select class="form-select" id="usuarioAtual">
+                            <option value="">Selecione...</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-4">
+                        <button
+                            class="btn btn-primary w-100"
+                            id="entrar"
+                            type="button"
+                        >
+                            Entrar / trocar usuário
+                        </button>
+                    </div>
+
+                    <div class="col-12">
+                        <button
+                            class="btn btn-link px-0"
+                            id="cadastroPublico"
+                            type="button"
+                        >
+                            Ainda não tem cadastro? Cadastre-se aqui
+                        </button>
+                    </div>
+
+                </div>
+
+                <div class="mt-2 small" id="sessaoInfo"></div>
+
+            </div>
+        </section>
+
+        <!-- ÁREA PRIVADA -->
+        <div id="areaPrivada" hidden>
+
+            <!-- MENU -->
+            <nav class="nav nav-pills flex-wrap gap-2 mb-4" id="menu">
+
+                <button class="nav-link active" data-tela="painel">
+                    Visão geral
+                </button>
+
+                <button class="nav-link" data-tela="clientes">
+                    Clientes
+                </button>
+
+                <button class="nav-link" data-tela="carros">
+                    Automóveis
+                </button>
+
+                <button class="nav-link" data-tela="pedidos">
+                    Pedidos
+                </button>
+
+                <button class="nav-link" data-tela="agentes">
+                    Análises
+                </button>
+
+                <button class="nav-link" data-tela="contratos">
+                    Contratos
+                </button>
+
+            </nav>
+
+            <!-- VISÃO GERAL -->
+            <section class="tela" id="tela-painel">
+
+                <div class="row g-3" id="indicadores"></div>
+
+                <div class="card panel mt-4">
+                    <div class="card-body">
+
+                        <h2 class="h5">Como usar</h2>
+
+                        <p>
+                            1. Cadastre um cliente ou escolha um já existente.
+                            2. Escolha um automóvel.
+                            3. Crie um pedido.
+                            4. Entre como agente para avaliar.
+                            5. Registre o contrato após a aprovação.
+                        </p>
+
+                        <p class="small text-secondary mb-0">
+                            Os dados são persistidos pelo JSON Server.
+                            Para operações administrativas, selecione um agente.
+                        </p>
+
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- CLIENTES -->
+            <section class="tela" id="tela-clientes" hidden>
+
+                <div class="d-flex justify-content-between align-items-center mb-3">
+
+                    <h2>Clientes</h2>
+
+                    <button class="btn btn-primary" id="novoCliente">
+                        + Novo cliente
+                    </button>
+
+                </div>
+
+                <div class="card panel">
+                    <div class="table-responsive">
+
+                        <table class="table table-hover mb-0">
+
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>CPF</th>
+                                    <th>Profissão</th>
+                                    <th>Empregadores</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="listaClientes"></tbody>
+
+                        </table>
+
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- AUTOMÓVEIS -->
+            <section class="tela" id="tela-carros" hidden>
+
+                <div class="d-flex justify-content-between align-items-center mb-3">
+
+                    <h2>Automóveis</h2>
+
+                    <button class="btn btn-primary" id="novoCarro">
+                        + Novo automóvel
+                    </button>
+
+                </div>
+
+                <div class="row g-3" id="listaCarros"></div>
+
+            </section>
+
+            <!-- PEDIDOS -->
+            <section class="tela" id="tela-pedidos" hidden>
+
+                <div class="d-flex justify-content-between align-items-center mb-3">
+
+                    <h2>Pedidos de aluguel</h2>
+
+                    <button class="btn btn-primary" id="novoPedido">
+                        + Novo pedido
+                    </button>
+
+                </div>
+
+                <div class="card panel">
+                    <div class="table-responsive">
+
+                        <table class="table table-hover mb-0">
+
+                            <thead>
+                                <tr>
+                                    <th>Pedido</th>
+                                    <th>Cliente</th>
+                                    <th>Automóvel</th>
+                                    <th>Período</th>
+                                    <th>Status</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="listaPedidos"></tbody>
+
+                        </table>
+
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- ANÁLISE FINANCEIRA -->
+            <section class="tela" id="tela-agentes" hidden>
+
+                <h2>Análise financeira</h2>
+
+                <p class="text-secondary">
+                    Agentes de empresa e de banco podem avaliar
+                    pedidos pendentes.
+                </p>
+
+                <div id="listaAnalises"></div>
+
+            </section>
+
+            <!-- CONTRATOS -->
+            <section class="tela" id="tela-contratos" hidden>
+
+                <div class="d-flex justify-content-between align-items-center mb-3">
+
+                    <h2>Contratos</h2>
+
+                    <button class="btn btn-primary" id="novoContrato">
+                        + Novo contrato
+                    </button>
+
+                </div>
+
+                <div class="card panel">
+                    <div class="table-responsive">
+
+                        <table class="table table-hover mb-0">
+
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Pedido</th>
+                                    <th>Tipo</th>
+                                    <th>Banco</th>
+                                    <th>Valor</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="listaContratos"></tbody>
+
+                        </table>
+
+                    </div>
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+    <!-- MODAL DE FORMULÁRIOS -->
+    <div
+        class="modal fade"
+        id="modalFormulario"
+        tabindex="-1"
+        aria-hidden="true"
+    >
+
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+
+                    <h5 class="modal-title" id="tituloModal"></h5>
+
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Fechar"
+                    ></button>
+
+                </div>
+
+                <form id="formulario">
+
+                    <div class="modal-body" id="camposFormulario"></div>
+
+                    <div class="modal-footer">
+
+                        <button
+                            type="button"
+                            class="btn btn-outline-secondary"
+                            data-bs-dismiss="modal"
+                        >
+                            Cancelar
+                        </button>
+
+                        <button type="submit" class="btn btn-primary">
+                            Salvar
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- RODAPÉ -->
+    <footer class="container py-4 text-secondary small">
+        AutoRent • Protótipo acadêmico • Bootstrap 5 + JSON Server
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
+
+</body>
+</html>

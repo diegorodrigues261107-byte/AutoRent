@@ -1,0 +1,158 @@
+:root {
+    --navy: #14213d;
+    --blue: #2563eb;
+    --bg: #f3f6fb;
+}
+
+body {
+    background: var(--bg);
+    color: #1d2939;
+    font-family: Inter, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.navbar {
+    background: var(--navy);
+}
+
+.hero {
+    background: linear-gradient(115deg, #14213d, #2553a4);
+    border-radius: 22px;
+    color: white;
+    box-shadow: 0 12px 30px #14213d22;
+}
+
+.hero h1 {
+    font-size: clamp(1.7rem, 3.5vw, 2.7rem);
+}
+
+.hero p {
+    color: #dbeafe;
+}
+
+.eyebrow {
+    letter-spacing: .15em;
+    font-size: .7rem;
+    color: #a8d2ff;
+    font-weight: 800;
+}
+
+.panel,
+.car-card,
+.stat-card {
+    border: 0;
+    border-radius: 17px;
+    box-shadow: 0 5px 22px #14213d0d;
+}
+
+.stat-card {
+    background: white;
+    padding: 24px;
+}
+
+.stat-card strong {
+    font-size: 2rem;
+    display: block;
+    color: var(--navy);
+}
+
+.stat-card span {
+    color: #667085;
+}
+
+.nav-pills .nav-link {
+    color: #344054;
+    background: #fff;
+    border: 1px solid #e4e7ec;
+}
+
+.nav-pills .nav-link.active {
+    background: var(--blue);
+    border-color: var(--blue);
+}
+
+.btn-primary {
+    background: var(--blue);
+    border-color: var(--blue);
+}
+
+.table {
+    vertical-align: middle;
+}
+
+.table th {
+    color: #667085;
+    font-size: .85rem;
+    white-space: nowrap;
+}
+
+.car-card {
+    background: #fff;
+    padding: 22px;
+    height: 100%;
+}
+
+.car-icon {
+    font-size: 3rem;
+    background: #edf4ff;
+    border-radius: 12px;
+    text-align: center;
+    padding: 12px;
+}
+
+.badge-status {
+    font-size: .75rem;
+    padding: 7px 10px;
+    border-radius: 999px;
+    background: #eef2ff;
+    color: #3730a3;
+}
+
+.status-aprovado {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.status-rejeitado,
+.status-cancelado {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.status-pendente {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.acoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.acoes .btn {
+    font-size: .75rem;
+}
+
+.form-label {
+    font-weight: 600;
+    font-size: .88rem;
+}
+
+.hint {
+    color: #667085;
+    font-size: .8rem;
+}
+
+.table-responsive {
+    border-radius: 17px;
+}
+
+@media (max-width: 600px) {
+    .hero {
+        padding: 25px !important;
+    }
+
+    .table {
+        font-size: .84rem;
+    }
+}

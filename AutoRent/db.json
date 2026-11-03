@@ -1,0 +1,136 @@
+{
+  "clientes": [
+    {
+      "nome": "Lucas Almeida",
+      "cpf": "52998224725",
+      "rg": "MG-12.345.678",
+      "endereco": "Rua das Flores, 150",
+      "profissao": "Engenheiro de Software",
+      "empregadores": [
+        {
+          "entidade": "Tech Solutions",
+          "rendimento": 5500
+        }
+      ],
+      "id": 1
+    },
+    {
+      "id": 2,
+      "nome": "Ana Souza",
+      "cpf": "12345678901",
+      "rg": "MG1234567",
+      "endereco": "Belo Horizonte, MG",
+      "profissao": "Analista",
+      "empregadores": [
+        {
+          "entidade": "Empresa Alfa",
+          "rendimento": 4500
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "nome": "Bruno Lima",
+      "cpf": "98765432100",
+      "rg": "MG7654321",
+      "endereco": "Contagem, MG",
+      "profissao": "Professor",
+      "empregadores": [
+        {
+          "entidade": "Escola Beta",
+          "rendimento": 3800
+        }
+      ]
+    }
+  ],
+  "automoveis": [
+    {
+      "id": 1,
+      "matricula": "MAT001",
+      "marca": "Toyota",
+      "modelo": "Corolla",
+      "ano": 2023,
+      "placa": "ABC1D23",
+      "proprietarioTipo": "empresa"
+    },
+    {
+      "id": 2,
+      "matricula": "MAT002",
+      "marca": "Honda",
+      "modelo": "Civic",
+      "ano": 2022,
+      "placa": "DEF4G56",
+      "proprietarioTipo": "empresa"
+    },
+    {
+      "id": 3,
+      "matricula": "MAT003",
+      "marca": "Chevrolet",
+      "modelo": "Onix",
+      "ano": 2024,
+      "placa": "GHI7J89",
+      "proprietarioTipo": "empresa"
+    }
+  ],
+  "pedidos": [
+    {
+      "clienteId": 1,
+      "automovelId": 1,
+      "dataInicio": "2026-11-10",
+      "dataFim": "2026-11-15",
+      "observacao": "Aluguel para viagem de férias.",
+      "status": "aprovado",
+      "agenteId": 1,
+      "parecer": "Cliente aprovado após análise financeira.",
+      "id": 1
+    },
+    {
+      "clienteId": 1,
+      "automovelId": 1,
+      "dataInicio": "2026-11-11",
+      "dataFim": "2026-11-15",
+      "observacao": "vigem",
+      "status": "aprovado",
+      "agenteId": 1,
+      "parecer": "porque sim",
+      "id": 2
+    },
+    {
+      "id": 3,
+      "clienteId": 2,
+      "automovelId": 1,
+      "dataInicio": "2026-11-10",
+      "dataFim": "2026-11-15",
+      "status": "pendente",
+      "observacao": "Viagem a trabalho",
+      "agenteId": null,
+      "parecer": ""
+    }
+  ],
+  "agentes": [
+    {
+      "id": 1,
+      "nome": "Agente Financeiro",
+      "tipo": "banco"
+    },
+    {
+      "id": 2,
+      "nome": "Agente Locadora Central",
+      "tipo": "empresa"
+    },
+    {
+      "id": 3,
+      "nome": "Agente Banco Horizonte",
+      "tipo": "banco"
+    }
+  ],
+  "contratos": [
+    {
+      "pedidoId": 1,
+      "tipo": "credito",
+      "bancoId": 1,
+      "valor": 1000,
+      "id": 1
+    }
+  ]
+}
